@@ -9,15 +9,15 @@ using namespace std;
 class Solution {
 public:
     vector<string> wordBreak(string s, vector<string>& wordDict) {
-        unordered_set<string> wordSet(wordDict.begin(), wordDict.end()); // Преобразуем wordDict в множество для поиска за O(1)
-        unordered_map<string, vector<string>> memo; // Карта мемоизации
+        unordered_set<string> wordSet(wordDict.begin(), wordDict.end()); // РџСЂРµРѕР±СЂР°Р·СѓРµРј wordDict РІ РјРЅРѕР¶РµСЃС‚РІРѕ РґР»СЏ РїРѕРёСЃРєР° Р·Р° O(1)
+        unordered_map<string, vector<string>> memo; // РљР°СЂС‚Р° РјРµРјРѕРёР·Р°С†РёРё
         return backtrack(s, wordSet, memo);
     }
 
 private:
     vector<string> backtrack(const string& s, const unordered_set<string>& wordSet, unordered_map<string, vector<string>>& memo) {
         if (memo.find(s) != memo.end()) {
-            return memo[s]; // Возвращаем мемоизированный результат, если он доступен
+            return memo[s]; // Р’РѕР·РІСЂР°С‰Р°РµРј РјРµРјРѕРёР·РёСЂРѕРІР°РЅРЅС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚, РµСЃР»Рё РѕРЅ РґРѕСЃС‚СѓРїРµРЅ
         }
         if (s.empty()) {
             return { "" };
@@ -40,7 +40,7 @@ private:
             }
         }
 
-        memo[s] = sentences; // Мемоизируем результат
+        memo[s] = sentences; // РњРµРјРѕРёР·РёСЂСѓРµРј СЂРµР·СѓР»СЊС‚Р°С‚
         return sentences;
     }
 };

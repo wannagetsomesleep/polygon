@@ -1,16 +1,16 @@
-include <iostream>
+#include <iostream>
 #include <vector>
-#include <cstdlib>  // для std::rand и std::srand
-#include <ctime>    // для std::time
+#include <cstdlib>  // Г¤Г«Гї std::rand ГЁ std::srand
+#include <ctime>    // Г¤Г«Гї std::time
 
 void shuffArr(std::vector<int>& arr) {
     int n = arr.size();
     for (int i = n - 1; i > 0; --i) {
-        int j = std::rand() % (i + 1);  // Генерация случайного индекса j
-        std::swap(arr[i], arr[j]);      // Обмен элементов arr[i] и arr[j]
+        int j = std::rand() % (i + 1);  // ГѓГҐГ­ГҐГ°Г Г¶ГЁГї Г±Г«ГіГ·Г Г©Г­Г®ГЈГ® ГЁГ­Г¤ГҐГЄГ±Г  j
+        std::swap(arr[i], arr[j]);      // ГЋГЎГ¬ГҐГ­ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў arr[i] ГЁ arr[j]
     }
-    // Вывод перемешанного массива
-    std::cout << "Перемешанный массив: [";
+    // Г‚Г»ГўГ®Г¤ ГЇГҐГ°ГҐГ¬ГҐГёГ Г­Г­Г®ГЈГ® Г¬Г Г±Г±ГЁГўГ 
+    std::cout << "ГЏГҐГ°ГҐГ¬ГҐГёГ Г­Г­Г»Г© Г¬Г Г±Г±ГЁГў: [";
     for (size_t i = 0; i < arr.size(); ++i) {
         std::cout << arr[i];
         if (i < arr.size() - 1) {
@@ -21,7 +21,7 @@ void shuffArr(std::vector<int>& arr) {
 }
 
 int main() {
-    std::srand(static_cast<unsigned int>(std::time(0))); // Инициализация генератора случайных чисел
+    std::srand(static_cast<unsigned int>(std::time(0))); // Г€Г­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГї ГЈГҐГ­ГҐГ°Г ГІГ®Г°Г  Г±Г«ГіГ·Г Г©Г­Г»Гµ Г·ГЁГ±ГҐГ«
     std::vector<int> arr = { 1, 100, 10, 2 };
     shuffArr(arr);
     return 0;

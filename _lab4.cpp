@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// Function to calculate the cost of a given partition
+// Функция для расчета стоимости данного разбиения
 double calculateCost(const vector<vector<double>>& clusters) {
     double totalCost = 0.0;
     for (const auto& cluster : clusters) {
@@ -19,7 +19,7 @@ double calculateCost(const vector<vector<double>>& clusters) {
     return totalCost;
 }
 
-// Function to generate all possible partitions of the array into K clusters
+// Функция для генерации всех возможных разбиений массива на K кластеров
 void generatePartitions(const vector<double>& arr, int K, int start, vector<vector<double>>& current, vector<vector<vector<double>>>& result) {
     if (K == 1) {
         current.back().insert(current.back().end(), arr.begin() + start, arr.end());
@@ -37,7 +37,7 @@ void generatePartitions(const vector<double>& arr, int K, int start, vector<vect
     }
 }
 
-// Function to find the optimal partition
+// Функция для поиска оптимального разбиения
 vector<vector<double>> findOptimalPartition(const vector<double>& arr, int K) {
     vector<vector<vector<double>>> allPartitions;
     vector<vector<double>> currentPartition = { {} };
@@ -57,7 +57,7 @@ vector<vector<double>> findOptimalPartition(const vector<double>& arr, int K) {
     return bestPartition;
 }
 
-// Example usage
+// Пример использования
 int main() {
     vector<double> arr1 = { 1, 2, 3, 4, 5, 6 };
     int K1 = 2;

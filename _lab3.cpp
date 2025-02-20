@@ -1,28 +1,36 @@
 #include <iostream>
 #include <vector>
-#include <cstdlib>  // äëÿ std::rand è std::srand
-#include <ctime>    // äëÿ std::time
+#include <algorithm> // для std::swap
+#include <cstdlib>   // для std::rand и std::srand
+#include <ctime>     // для std::time
 
-void shuffArr(std::vector<int>& arr) {
-    int n = arr.size();
-    for (int i = n - 1; i > 0; --i) {
-        int j = std::rand() % (i + 1);  // Ãåíåðàöèÿ ñëó÷àéíîãî èíäåêñà j
-        std::swap(arr[i], arr[j]);      // Îáìåí ýëåìåíòîâ arr[i] è arr[j]
+// Функция для перемешивания массива
+void shuffleArray(std::vector<int>& arr) {
+    // Инициализация генератора случайных чисел
+    std::srand(std::time(0));
+
+    // Алгоритм Фишера-Йетса
+    for (int i = arr.size() - 1; i > 0; --i) {
+        // Генерация случайного индекса от 0 до i
+        int j = std::rand() % (i + 1);
+
+        // Меняем местами arr[i] и arr[j]
+        std::swap(arr[i], arr[j]);
     }
-    // Âûâîä ïåðåìåøàííîãî ìàññèâà
-    std::cout << "Ïåðåìåøàííûé ìàññèâ: [";
-    for (size_t i = 0; i < arr.size(); ++i) {
-        std::cout << arr[i];
-        if (i < arr.size() - 1) {
-            std::cout << ", ";
-        }
-    }
-    std::cout << "]" << std::endl;
 }
 
 int main() {
-    std::srand(static_cast<unsigned int>(std::time(0))); // Èíèöèàëèçàöèÿ ãåíåðàòîðà ñëó÷àéíûõ ÷èñåë
-    std::vector<int> arr = { 1, 100, 10, 2 };
-    shuffArr(arr);
+    // Пример входных данных
+    std::vector<int> arr = {1, 100, 10, 2};
+
+    // Перемешиваем массив
+    shuffleArray(arr);
+
+    // Выводим результат
+    for (const auto& num : arr) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
     return 0;
 }
